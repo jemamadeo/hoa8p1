@@ -1,0 +1,14 @@
+---
+- name: Update package cache
+  apt:
+    update_cache: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Update package cache
+  dnf:
+    update_cache: yes
+    use_backend: dnf4
+    name: '*'
+    state: latest
+  when: ansible_distribution == "CentOS"
+
